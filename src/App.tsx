@@ -32,7 +32,7 @@ function App() {
   return (
     <div className="App">
       <Box
-        w={isMobile ? "20.62rem" : "30.62rem"}
+        w={isMobile ? "20rem" : "30.62rem"}
         mx="auto"
         pt="10.25rem"
         boxShadow="rgb(0 0 0 / 8%) 0rem 0.37rem 0.62rem"
@@ -78,7 +78,7 @@ function App() {
                 <Text
                   color="black"
                   fontWeight="500"
-                  fontSize="20px"
+                  fontSize={isMobile ? "15" :"20"}
                   textAlign="center"
                 >
                   ShortestPATH: {shortPath}

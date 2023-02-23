@@ -2,7 +2,8 @@ import {
   Flex,
   Box,
   Text,
-  Input
+  Input,
+  useMediaQuery
 } from "@chakra-ui/react";
 
 interface InputProps {
@@ -18,6 +19,8 @@ export default function InputComp({ tokenName, value, onChangeInput }: InputProp
     const newValue = event.target.value;
     onChangeInput?.(newValue);
   }
+
+  const [isMobile] = useMediaQuery("(max-width: 768px)")
   return (
     <Flex
       alignItems="center"
@@ -35,8 +38,8 @@ export default function InputComp({ tokenName, value, onChangeInput }: InputProp
         <Box>
           <Text
             color="black"
-            fontSize="30"
-            pl="5px"
+            fontSize={isMobile ? "20" :"30"}
+            pl={isMobile ? "1rem" : "2rem"}
             fontWeight="500">
             {tokenName}
           </Text>
@@ -48,10 +51,10 @@ export default function InputComp({ tokenName, value, onChangeInput }: InputProp
           <Input
             placeholder="0.0"
             fontWeight="500"
-            fontSize="1.5rem"
+            fontSize={ isMobile ? "1rem" :"1.5rem"}
             width="100%"
-            ml="8rem"
-            size="19rem"
+            ml={isMobile ? "3rem" : "8rem"}
+            size={isMobile ? "15rem" : "19rem"}
             textAlign="right"
             bg="rgb(247, 248, 250)"
             outline="none"
