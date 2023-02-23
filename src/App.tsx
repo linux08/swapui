@@ -8,15 +8,22 @@ import {
 import InputComp from './components/Input';
 import { SettingsIcon } from '@chakra-ui/icons';
 
-// import { getAmountOut } from 'swap';
+import { getAmountOut, getPath } from '../src/utils/index';
+
 import './App.css';
 
 function App() {
 
   const [value, setValue] = useState<string>("0");
+  const [valueTwo, setValueTwo] = useState<string>("0");
+  const [shortPath, setShortPath] = useState<string>("");
 
-  function handleInputChange(newValue: string) {
+  async function handleInputChange(newValue: string) {
     setValue(newValue);
+    let amount = await getAmountOut(newValue)
+    setValueTwo(amount.toString())
+    let shortestPath = await getPath(newValue);
+    setShortPath(shortestPath.join(' > '))
   }
 
   return (
@@ -60,10 +67,24 @@ function App() {
 
           <InputComp
             tokenName="COMP"
-            value={((value)).toString()}
+            value={valueTwo}
           />
+          <>
+            {shortPath !== "" &&
+              (<Box py="3rem">
+                <Text
+                  color="black"
+                  fontWeight="500"
+                  fontSize="20px"
+                >
+                  ShortestPATH: {shortPath}
+                </Text>
+              </Box>)
+              }
+          </>
 
         </Box>
+
       </Box>
     </div>
   );
