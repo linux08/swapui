@@ -4,6 +4,7 @@ import {
   Flex,
   Box,
   Text,
+  useMediaQuery
 } from "@chakra-ui/react";
 import InputComp from './components/Input';
 import { SettingsIcon } from '@chakra-ui/icons';
@@ -18,6 +19,8 @@ function App() {
   const [valueTwo, setValueTwo] = useState<string>("0");
   const [shortPath, setShortPath] = useState<string>("");
 
+  const [isMobile] = useMediaQuery("(max-width: 768px)")
+
   async function handleInputChange(newValue: string) {
     setValue(newValue);
     let amount = await getAmountOut(newValue)
@@ -29,9 +32,9 @@ function App() {
   return (
     <div className="App">
       <Box
-        w="30.62rem"
+        w={isMobile ? "20.62rem" : "30.62rem"}
         mx="auto"
-        pt="15.25rem"
+        pt="10.25rem"
         boxShadow="rgb(0 0 0 / 8%) 0rem 0.37rem 0.62rem"
         borderRadius="1.37rem">
 
@@ -76,11 +79,12 @@ function App() {
                   color="black"
                   fontWeight="500"
                   fontSize="20px"
+                  textAlign="center"
                 >
                   ShortestPATH: {shortPath}
                 </Text>
               </Box>)
-              }
+            }
           </>
 
         </Box>

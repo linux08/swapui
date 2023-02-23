@@ -50,7 +50,7 @@ export default function InputComp({ tokenName, value, onChangeInput }: InputProp
             fontWeight="500"
             fontSize="1.5rem"
             width="100%"
-            ml="10rem"
+            ml="8rem"
             size="19rem"
             textAlign="right"
             bg="rgb(247, 248, 250)"
