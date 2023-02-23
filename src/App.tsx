@@ -7,6 +7,8 @@ import {
 } from "@chakra-ui/react";
 import InputComp from './components/Input';
 import { SettingsIcon } from '@chakra-ui/icons';
+
+// import { getAmountOut } from 'swap';
 import './App.css';
 
 function App() {
@@ -58,7 +60,7 @@ function App() {
 
           <InputComp
             tokenName="COMP"
-            value={(parseInt(value) * 10).toString()}
+            value={((value)).toString()}
           />
 
         </Box>

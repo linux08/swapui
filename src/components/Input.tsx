@@ -41,7 +41,10 @@ export default function InputComp({ tokenName, value, onChangeInput }: InputProp
             {tokenName}
           </Text>
         </Box>
-        <Box>
+        <Box
+          display="flex"
+          justifyContent="center"
+        >
           <Input
             placeholder="0.0"
             fontWeight="500"
