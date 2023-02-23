@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import {
   Flex,
   Box,
@@ -8,8 +7,7 @@ import {
 } from "@chakra-ui/react";
 import InputComp from './components/Input';
 import { SettingsIcon } from '@chakra-ui/icons';
-
-import { getAmountOut, getPath } from '../src/utils/index';
+import { getAmountOut, getPath } from 'swap';
 
 import './App.css';
 
@@ -23,10 +21,10 @@ function App() {
 
   async function handleInputChange(newValue: string) {
     setValue(newValue);
-    let amount = await getAmountOut(newValue)
-    setValueTwo(amount.toString())
+    let amount = await getAmountOut(newValue);
+    setValueTwo(amount.toString());
     let shortestPath = await getPath(newValue);
-    setShortPath(shortestPath.join(' > '))
+    setShortPath(shortestPath.join(' > '));
   }
 
   return (
